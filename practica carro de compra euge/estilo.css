@@ -6,11 +6,10 @@
     box-sizing: border-box;
 }
 .header1{
-    border: 1px solid red;
     top: 48px;
     background: url(img/inicio.jpeg);
     background-size:contain;
-    background-position:absolute;
+    background-position:relative;
     height: 300px;
 }
 header h1{
@@ -245,7 +244,7 @@ header h1{
 .menu{
     width: 100px;
     position: absolute;
-    top: 48px;
+    top: -48px;
     z-index: -1;
     right: 0px;    
     transition: 250ms;
@@ -262,7 +261,7 @@ header h1{
     padding: 10px 12px;
 }
 .menu li a:hover{
-    background-color: antiquewhite;
+    background-color: gray;
 }
 .checkbox:checked~.menu{
     top: 48px;
@@ -277,6 +276,8 @@ header h1{
     .carrito{
         width: 100%;
     }
+}
+@media (min-width: 560px){
     .checkbox, .fa-bars, .fa-xmark{
         display: none;
     }
