@@ -152,5 +152,15 @@ a.selected{
         width: 80px;
         left: -80px;
     }
+    .contenedor {
+        display: block;
+      }
+      .contenedor-items{
+          width: 100% ;
+      }
+      .carrito{
+          width: 100%;
+      }
+  
     
 }
