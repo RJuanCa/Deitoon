@@ -1,11 +1,11 @@
 .header1{
     top: 48px;
-    background: url(img/inicio.jpeg);
+    background: url(/img/inicio.jpeg);
     background-size:contain;
-    background-position:relative;
+    background-position:top;
     height: 300px;
 }
-.header1 h1{
+.header1 .h1{
     text-align: center;
     font-size: 35px;
     color: #fff;
@@ -21,12 +21,11 @@
 .contenedor{
     background:url(img/fondovinoteca.jpg);
     max-width: 1200px;
-    padding: 10px;
+    padding: 0px;
     margin: auto;
     display: flex;
-    justify-content: space-between;
-    
-    contain: paint;
+    justify-content: space-between;    
+    contain:content;
 }
 
 .contenedor .contenedor-items{
@@ -42,15 +41,15 @@
     max-width: 200px;
     margin: auto;
     border: 1px solid #381b1ba6;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 0px;
+    padding: 0px;
     transition: .3s;
 }
 .contenedor .contenedor-items .item .img-item{
     width: 100%;
 }
 .contenedor .contenedor-items .item:hover{
-    box-shadow: 0 0 10px #666;
+    box-shadow: 0 0 10px white;
     scale: 1.05;
 }
 .contenedor .contenedor-items .item .titulo-item{
@@ -78,7 +77,7 @@
 }
 
 .carrito{
-    border: 1px solid #666;
+    border: 1px solid #381b1ba6;
     width: 35%;
     margin-top: 30px;
     border-radius: 10px;
@@ -102,7 +101,7 @@
     align-items: center;
     
     position: relative;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid #381b1ba6;
     padding: 20px;
 }
 .carrito .carrito-item img{
@@ -196,12 +195,11 @@
 }
 .body1{
     font-family: sans-serif;
-    background-color: #381b1ba6;
+    /*background-color: #381b1ba6;*/
     color: white;
     background:url(./fondovinoteca.jpg);
 }
-.body h1{
-    border: 1px solid blue;
+.body1 h1{
     align-items: center;
     background-color:#381b1ba6;
     color: #000;
@@ -210,7 +208,7 @@
     background-color: #381b1ba6;
     height: 48px;
     padding: 10px 12px;
-    position: relative;    
+    position: relative;  
 }
 .checkbox, .icons{
     width: 24px;
@@ -218,46 +216,49 @@
     position:absolute;
     top: 10px;
     right: 22px;
-    cursor: pointer;
+    cursor: pointer;   
 }
 .icons{
     pointer-events: none;
     font-size: 24px;
+  
 }
 .checkbox{
-    opacity: 100;
+    opacity: 0;
 }
 .fa-xmark{
-    display:block;
+    display:none;
 }
 .checkbox:checked ~ .fa-bars{
-    display: block;
+    display: none;
 }
 .checkbox:checked ~ .fa-xmark{
     display: block;
 }
-.menu1{
+.menu{
     width: 200px;
-    position:absolute;
+    position: absolute;
     top: -108px;
     z-index: -1;
-    right: 20px;
+    right: 0px;
     transition: 250ms;
+    box-shadow: 0 0 10px white;
+    scale: 1.05;
 }
-.menu1 li{
+.menu li{
     list-style: none;
 }
-.menu1 li a{
+.menu li a{
     text-decoration: none;
     color: inherit;
     background-color:#381b1ba6;
     display: block;
     padding: 10px 12px;
 }
-.menu1 li a:hover{
-    background-color: grey;
+.menu li a:hover{
+    background-color:#381b1b00;
 }
-.checkbox:checked ~ .menu1{
+.checkbox:checked ~ .menu{
     top: 48px;
 }
 @media (min-width: 560px){
@@ -266,7 +267,7 @@
     }
     .menu{
         top: 0;
-        z-index: 2;
+        z-index: 1;
         width: unset;
         display: flex;
         height: 48px;
@@ -275,4 +276,13 @@
         height: 48px;
         padding: 14px 12px 6px;
     } 
+    .contenedor {
+        display: block;
+      }
+      .contenedor-items{
+          width: 100% ;
+      }
+      .carrito{
+          width: 100%;
+      }
 } 

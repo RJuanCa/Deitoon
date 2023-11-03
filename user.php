@@ -1,13 +1,13 @@
 <?php 
 include_once 'db.php';
 class User extends DB{
-  private $nombre;
+  private $contraseña;
   private $usuario;
 
-  public function userExists($usuario, $clave){
-    $md5pass = $clave;
-    $query = $this->connect()->prepare('SELECT * FROM tab_usuarios WHERE usuario = :usuario AND clave = :clave');
-    $query->execute(['usuario' => $usuario,'clave'=> $clave]);
+  public function userExists($usuario, $contraseña){
+    //$md5pass = $contraseña;
+    $query = $this->connect()->prepare ('SELECT * FROM tab_usuarios WHERE usuario = :usuario AND contraseña = :contraseña');
+    $query->execute(['usuario' => $usuario,'contraseña'=> $contraseña]);
 
     if($query->rowCount()){
       return true;
@@ -16,18 +16,18 @@ class User extends DB{
     }
   }
   public function setUser($usuario){
-    $query = $this->connect()->prepare('SELECT * FROM tab_usuarios WHERE usuario =:usuario AND clave =:clave');
+    $query = $this->connect()->prepare('SELECT * FROM tab_usuarios WHERE usuario =:usuario AND contraseña =:contraseña');
     $query->execute(['usuario'=>$usuario]);
 
     foreach ($query as $currentUser){
-      $this->nombre = $currentUser['nombre'];
+      $this->contraseña = $currentUser['contraseña'];
       $this->usuario = $currentUser['usuario'];      
     }
 
   }
   
   public function getNombre(){
-   return $this->nombre;
+   return $this->usuario;
   }
 }
 

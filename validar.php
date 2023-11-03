@@ -1,44 +1,45 @@
 <?php
 include_once 'db.php';
+include_once 'user.php';
 session_start();
 
 if(isset($_GET['cerrar_sesion'])){
     session_unset();
     session_destroy();
 }
-if(isset($_SESSION['rol'])){
-    switch($_SESSION['rol']){
-        case '1':
-            header('location:admin.php');
+if(isset($_SESSION['usuario'])){
+    switch($_SESSION['id_cargo']){
+        case 1:
+            header('location: admin.php');
             break;
-        case '2':
-            header('location:home.php');
+        case 2:
+            header('location: home.php');
             break;
             
             default:
 
     }
 }
-if(isset($_POST['usuario']) && isset($_POST['clave'])){
+if(isset($_POST['usuario']) && isset($_POST['contraseña'])){
     $usuario = $_POST['usuario'];
-    $clave = $_POST['clave'];
+    $contraseña = $_POST['contraseña'];
 
-    $db= new DB();
-    $query = $db->connect()->prepare('SELECT * FROM tab_usuarios WHERE usuario = :usuario AND clave = :clave');
-    $query->execute(['usuario' => $usuario, 'clave' => $clave]);
-
-    $row = $query->fetch(PDO::FETCH_NUM);
+   
+    $sql = "SELECT * FROM tab_usuarios ";
+    $result= mysqli_query($conexion, $sql);
+    
+    $row = mysqli_fetch_array($result);
     if($row==true){
         //valida cargo
-        $rol = $row[7];
-        $_SESSION['rol']=$rol;
+        $cargo = $row[7];
+        $_SESSION['id_cargo']=$cargo;
 
-        switch($_SESSION['rol']){
+        switch($_SESSION['id_cargo']){
             case 1:
-                header('location:admin.php');
+                header('location: admin.php');
                 break;
             case 2:
-                header('location:home.php');
+                header('location: indice.html');
                 break;
                 
                 default:
