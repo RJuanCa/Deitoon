@@ -1,9 +1,3 @@
-<?php
-include_once 'db.php';
-
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -27,7 +21,7 @@ session_start();
             <input type="text" id="usuario" name="usuario" autofocus ><br><br>
             <i class="fa-solid fa-unlock"></i>
             <label class="form-label blank">Contraseña</label>
-            <input type="password" id="contraseña" name="contraseña" >
+            <input type="password" id="contraseña" name="contraseña">
             <input  type="submit" id="btn-submit" value="Entrar">
        
         </form>

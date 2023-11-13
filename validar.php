@@ -1,19 +1,18 @@
 <?php
 include_once 'db.php';
-include_once 'user.php';
 session_start();
 
-if(isset($_GET['cerrar_sesion'])){
+if (isset($_GET['cerrar_sesion'])) {
     session_unset();
     session_destroy();
 }
-if(isset($_SESSION['usuario'])){
-    switch($_SESSION['id_cargo']){
+if(isset($_SESSION['rol'])){
+    switch($_SESSION['rol']){
         case 1:
             header('location: admin.php');
             break;
         case 2:
-            header('location: home.php');
+            header('location: indice.html');
             break;
             
             default:
@@ -27,14 +26,13 @@ if(isset($_POST['usuario']) && isset($_POST['contraseña'])){
    
     $sql = "SELECT * FROM tab_usuarios ";
     $result= mysqli_query($conexion, $sql);
-    
     $row = mysqli_fetch_array($result);
     if($row==true){
         //valida cargo
         $cargo = $row[7];
-        $_SESSION['id_cargo']=$cargo;
+        $_SESSION['rol']=$cargo;
 
-        switch($_SESSION['id_cargo']){
+        switch($_SESSION['rol']){
             case 1:
                 header('location: admin.php');
                 break;

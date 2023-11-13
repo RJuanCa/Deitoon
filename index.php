@@ -1,14 +1,15 @@
 <?php
 include_once 'db.php';
+include_once 'user.php';
 
 
 //$userSesion = new $userSesion();
-//$usuario= new User();
+$usuario= new User();
 
 if(isset($_SESSION['usuario'])){
     //echo "Hay sesion";
     $usuario->setUser($userSesion->getCurrentUser());
-    include_once 'validar.php';
+    include_once 'home.php';
 }else if(isset($_POST['usuario']) && isset($_POST['contraseña'])){
     //echo "Validacion de Login";
     $userForm = $_POST['usuario'];
@@ -18,7 +19,7 @@ if(isset($_SESSION['usuario'])){
         //echo "Usuario Validado";
         $userSession->setCurrentUser($userForm);
         $usuario->setUser($userForm);
-        include_once 'user.php';
+        include_once 'home.php';
     }else{
         //echo"Nombre de usuario y/o contraseña incorrecto";
         $errorLogin = "Nombre de usuario y/o contraseña incorrecto";
@@ -26,206 +27,6 @@ if(isset($_SESSION['usuario'])){
     }
 }else{
     //echo"login.php";
-    include_once 'index.php';
+    include_once 'login.php';
 }
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/estilo.css">
-    <script src="./js/operacion de carrito.js" async></script>
-    <link rel="stylesheet" href="./css/carrusel.css">
-    <script src="https://kit.fontawesome.com/887a835504.js" crossorigin="anonymous"></script>
-    <title>| DEITOON | </title>
-</head>
-<body class="body1">
-    <header style="align-items: center" class="header1" >
-
-        <nav class="navbar">
-            <i class="letra fa-solid fa-d fa-beat fa-2xl" style="color: #fcfcfc;"></i>
-            <i class="letra fa-solid fa-e fa-beat fa-2xl" style="color: #fcfcfc;"></i>
-            <i class="letra fa-solid fa-i fa-beat fa-2xl" style="color: #fcfcfc;"></i>
-            <i class="letra fa-solid fa-t fa-beat fa-2xl" style="color: #fcfcfc;"></i>
-            <i class="letra fa-solid fa-o fa-beat fa-2xl" style="color: #fcfcfc;"></i>
-            <i class="letra fa-solid fa-o fa-beat fa-2xl" style="color: #fcfcfc;"></i>
-            <i class="letra fa-solid fa-n fa-beat fa-2xl" style="color: #fcfcfc;"></i>
-            <input class="checkbox" type="checkbox">
-            <i class="icons fa-solid fa-bars"></i>
-            <i class="icons fa-solid fa-xmark"></i>
-        
-            <ul class="menu">
-                <li><a href="login.php"><i class="fa fa-user" title="usuarios"></i> Usuario</a></li>
-                <li><a href="carrito"><i class="fa-solid fa-cart-shopping"></i> carrito</a></li>
-                <li><a href="#"><i class="fa-brands fa-whatsapp"></i> Contacto</a></li>
-                <li><a href="#"><i class="fa-solid fa-person-from-portal"></i> Cerrar</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h1 style="text-align-last: center;">TODAS TUS BEBIDAS EN UN SOLO LUGAR</h1>
-    <main class="main1">
-    <div class="carrousel">
-        <div class="conteCarrousel">
-            <div class="itemCarrousel" id="itemCarrousel-1">
-                <div class="itemCarrouselTarjeta"> <img src="img/carrusel/promo4.jpg" alt=""></div>
-                <div class="itemCarrouselArrows">
-                    <a href="#itemCarrousel-3"> 
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                    <a href="#itemCarrousel-2">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="itemCarrousel" id="itemCarrousel-2">
-                <div class="itemCarrouselTarjeta"><img src="img/carrusel/promo2.jpg" alt=""></div>
-                <div class="itemCarrouselArrows">
-                    <a href="#itemCarrousel-1">
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                    <a href="#itemCarrousel-3">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="itemCarrousel" id="itemCarrousel-3">
-                <div class="itemCarrouselTarjeta"><img src="img/carrusel/promo3.png" alt=""></div>
-                <div class="itemCarrouselArrows">
-                    <a href="#itemCarrousel-2">
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                    <a href="#itemCarrousel-1">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="conteCarrouselController">
-            <a href="#itemCarrousel-1">•</a>
-            <a href="#itemCarrousel-2">•</a>
-            <a href="#itemCarrousel-3">•</a> 
-       </div> 
-    </div>
-
-    <section class="contenedor">
-        <!--Contenedor de los productos de bebidas-->
-        <div class="contenedor-items">
-            <div class="item">
-                <span class="titulo-item">Packs De Vinos Dulces</span>
-                <img src="img/prod1.jpg" alt="" class="img-item">
-                <span class="precio-item">$19.300</span>
-                <button class="boton-item">Agregar al Carrito</button>
-                <button class="boton-item"><details>•Dulce Natural (Vino Blanco): 2 botellas
-                    •Winter (Vino Tinto caliente): 2 botellas
-                    •Vino Tinto Dulce natural : 2 botellas
-                    </details></button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Francisco Labiano Malbec Roble</span>
-                <img src="img/prod2.png" alt="" class="img-item">
-                <span class="precio-item">$4.800</span>
-                <button class="boton-item">Agregar al Carrito</button>
-                <button class="boton-item" > <details>•botella de 750ML.
-                    •Procedente de uvas seleccionadas.
-                    •Ideal para acompañar carnes rojas, aves de caza y quesos.
-                    </details></button>
-            
-            </div>
-            <div class="item">
-                <span class="titulo-item">Licor 43</span>
-                <img src="img/prod3.webp" alt="" class="img-item">
-                <span class="precio-item">$14.000</span>
-                <button class="boton-item">Agregar al Carrito</button>
-                <button class="boton-item"> <details>•Botella de 700ml
-                    •Sabor Dulce, delicado, aromatico
-                    •Licor fino
-                    </details></button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Licor Tambo</span>
-                <img src="img/prod4.png" alt="" class="img-item">
-                <span class="precio-item">$9.480</span>
-                <button class="boton-item">Agregar al Carrito</button>
-                <button class="boton-item" > <details>•sabor:Dulce De Leche 
-                    •botella de 750ml
-                    •Graduación alcohólica 16%
-                    </details></button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Licor Asbtenta</span>
-                <img src="img/prod5.webp" alt="" class="img-item">
-                <span class="precio-item">$8.710</span>
-                <button class="boton-item">Agregar al Carrito</button>
-                <button class="boton-item" ><details>•Elaborado sobre la base de ajenjo, una de las hierbas más amargas, Para contrarrestar su áspero sabor se mezcla con hierbas como angélica, coriandro, anís y mucho azúcar.
-                    •botella de 750ML
-                    •Graduación alcohólica 54%
-                    </details></button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Licor Di San Mauro Arancello </span>
-                <img src="img/prod6.webp" alt="" class="img-item">
-                <span class="precio-item">$3.300</span>
-                <button class="boton-item">Agregar al Carrito</button>
-                <button class="boton-item"> <details>Licor de Naranja con proceso natural.
-                    • Se recomienda guardar en el freezer antes de beber.
-                    • 100% natural, sin conservantes.
-                    • Graduación alcohólica: 32%.
-                    </details></button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Licor Cusenier</span>
-                <img src="img/prod7.webp" alt="" class="img-item">
-                <span class="precio-item">$1.847</span>
-                <button class="boton-item">Agregar al Carrito</button>
-                <button class="boton-item" ><details>•Botella de 700ml
-                    •Sabor café
-                    •Graduación alcohólica: 17%.
-                    </details></button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Licor Tres Plumas</span>
-                <img src="img/prod8.webp" alt="" class="img-item">
-                <span class="precio-item">$32.000</span>
-                <button class="boton-item">Agregar al Carrito<button>
-                <button class="boton-item"> <details> •Botella de 700ml
-                    •Sabor chocolate blanco
-                    •Graduación alcohólica: 17%.
-                    </details></button>
-
-            </div>
-            <div class="item">
-                <span class="titulo-item">Licor Tres Plumas</span>
-                <img src="img/prod9.webp" alt="" class="img-item">
-                <span class="precio-item">$2.477</span>
-                <button class="boton-item">Agregar al Carrito</button>
-                <button class="boton-item"> <details>•Botella de 700ml
-                    •Sabor menta
-                    •Graduación alcohólica: 17%.
-                    </details></button>
-            </div>
-        </div>
-        <!-- carro -->
-        <div class="carrito" id="carrito">
-            <div class="header-carrito">
-                <h2>Tu Compra</h2>
-            </div>
-
-            <div class="carrito-items">
-            
-            </div>
-            <div class="carrito-total">
-                <div class="fila">
-                    <strong>Total</strong>
-                    <span class="carrito-precio-total"> </span>
-                </div>
-                <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
-            </div>
-        </div>
-    </section>
-</main>
-<script src="js/script.js"></script>
-</body>
-</html>
