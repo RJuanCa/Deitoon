@@ -137,6 +137,7 @@ include_once 'db.php';
                     <th scope="col" width='10%'>Producto</th>
                     <th scope="col" width='20%'>Descripción</th>
                     <th scope="col" width='10%'>Precio</th>
+                    <th scope="col" width='10%'>Imagen</th>
                     <th scope="col" width='10%'>Existencia</th>
                     <th scope="col" width='20%'>Acción</th>
                   </tr>
@@ -155,6 +156,7 @@ while($mostrar=mysqli_fetch_array($result)){
 <td scope="col" width='10%'><?php echo $mostrar['producto'] ?></th>
 <td scope="col" width='20%'><?php echo $mostrar['descripcion'] ?></th>
 <td scope="col" width='10%'><?php echo $mostrar['precio'] ?></th>
+<td scope="col" width='10%'><?php echo $mostrar['imagen'] ?></th>
 <td scope="col" width='10%'><?php echo $mostrar['cant_existencia'] ?></th>
 <td scope="col" width='10%'>
   <a class="btn btn-success" href="productos_editar.php?id=<?php echo $mostrar['id_artículo'] ?>">Editar</a>

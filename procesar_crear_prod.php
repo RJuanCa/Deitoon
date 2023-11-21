@@ -6,6 +6,7 @@ $img_articulo = $_POST["txtImg"];
 $producto = $_POST["txtProduc"];
 $descripcion = $_POST["txtDesc"];
 $precio = $_POST["txtPrecio"];
+$imagen = $_POST["txtImagen"];
 $cant_existencia = $_POST["txtCant"];
 
 $consulta="INSERT INTO `tab_artículos` (`id_artículo`,`cod_articulo`, `imagen`, `producto`, `descripcion`, `precio`, `cant_existencia`) VALUES ('','$cod_artículo','$img_articulo', '$producto', '$descripcion', '$precio', '$cant_existencia')";

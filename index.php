@@ -2,6 +2,7 @@
 include_once 'db.php';
 include_once 'user.php';
 
+
 //$userSesion = new $userSesion();
 $usuario= new User();
 
@@ -26,6 +27,6 @@ if(isset($_SESSION['usuario'])){
     }
 }else{
     //echo"login.php";
-    include_once'login.php';
+    include_once 'login.php';
 }
 ?>

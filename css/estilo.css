@@ -8,10 +8,10 @@
     top: 48px;
     background-image: url(/img/inicio.jpeg);
     background-size:contain;
-    background-position:relative;
-    height: 300px;  
+    background-position:top;
+    height: 300px;
 }
-.header h1{
+.header1 .h1{
     text-align: center;
     font-size: 35px;
     color: #fff;
@@ -47,15 +47,15 @@
     max-width: 200px;
     margin: auto;
     border: 1px solid #381b1ba6;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 0px;
+    padding: 0px;
     transition: .3s;
 }
 .contenedor .contenedor-items .item .img-item{
     width: 100%;
 }
 .contenedor .contenedor-items .item:hover{
-    box-shadow: 0 0 10px #666;
+    box-shadow: 0 0 10px white;
     scale: 1.05;
 }
 .contenedor .contenedor-items .item .titulo-item{
@@ -83,7 +83,7 @@
 }
 
 .carrito{
-    border: 1px solid #666;
+    border: 1px solid #381b1ba6;
     width: 35%;
     margin-top: 30px;
     border-radius: 10px;
@@ -105,7 +105,7 @@
     display: flex;
     align-items: center;   
     position: relative;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid #381b1ba6;
     padding: 20px;
 }
 .carrito .carrito-item img{
@@ -227,8 +227,8 @@
     height: 24px;
     position: absolute;
     top: 10px;
-    right: 12px;
-    cursor: pointer;
+    right: 22px;
+    cursor: pointer;   
 }
 .letra{
     font-size: 40px;
@@ -237,29 +237,30 @@
 }
 .icons{
     pointer-events: none;
-    font-size: 25px;
+    font-size: 24px;
+  
 }
 .checkbox{
     opacity: 0;
 }
 .fa-xmark{
+    display:none;
+}
+.checkbox:checked ~ .fa-bars{
     display: none;
 }
-.checkbox:checked ~.fa-bars{
-    display: none;
-}
-.checkbox:checked ~.fa-xmark{
+.checkbox:checked ~ .fa-xmark{
     display: block;
 }
 .menu{
     width: 200px;
     position: absolute;
-    top: -106px;
-    right: 0px;
+    top: -108px;
     z-index: -1;
+    right: 0px;
     transition: 250ms;
-    /*display: none;*/
-    
+    box-shadow: 0 0 10px white;
+    scale: 1.05;
 }
 .menu li{
     list-style: none;
@@ -271,11 +272,10 @@
     display: block;
     padding: 10px 12px;
 }
-menu li a:hover{
-    background-color: #381b1b00;
+.menu li a:hover{
+    background-color:#381b1b00;
 }
 .checkbox:checked ~ .menu{
-    
     top: 48px;
 }
 @media (min-width: 560px){
@@ -284,7 +284,7 @@ menu li a:hover{
     }
     .menu{
         top: 0;
-        z-index: 2;
+        z-index: 1;
         width: unset;
         display: flex;
         height: 48px;
@@ -302,5 +302,4 @@ menu li a:hover{
       .carrito{
           width: 100%;
       }
-  
 } 
