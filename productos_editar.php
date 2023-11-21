@@ -89,6 +89,8 @@ include ("db.php");
         <input type="hidden" value="<?php echo $mostrar['id_artículo'] ?>" name="txtId">
         <p style="color: white;">Cod. Artículo</p>
         <input type="text" value="<?php echo $mostrar['cod_articulo'] ?>" name="txtArt">
+        <p style="color: white;">Imagen del Artículo</p>
+        <input type="text" value="<?php echo $mostrar['imagen'] ?>" name="txtImg">
         <p style="color: white;">Producto</p>
         <input type="text" value="<?php echo $mostrar['producto'] ?>" name="txtProduc">
         <p style="color: white;">Descripción</p>

@@ -61,7 +61,7 @@ include_once 'db.php';
         </div>
       </a>
       
-      <a href="index.php">
+      <a href="indice.php">
         <div class="option">
           <i class="fas fa-right-to-bracket" title="salir"></i>
           <h4>Salir</h4>
@@ -161,7 +161,7 @@ while($mostrar=mysqli_fetch_array($result)){
   
   <form action="productos_eliminar.php" method="post">
     <input type="hidden" value="<?php echo $mostrar['id_artículo'] ?>" name="txtId">
-    <td><input class="btn btn-danger" type="submit" value="Eliminar" name="btnEliminar"></td>
+    <td><input class="btn btn-danger" type="submit" value="Eliminar" name="btnAccion"></td>
   </form>
   
 </td>

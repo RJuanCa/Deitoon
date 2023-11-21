@@ -119,7 +119,7 @@ if (isset($_GET['nro_remito'])) {
         </div>
       </a>
 
-      <a href="index.php">
+      <a href="indice.php">
         <div class="option">
           <i class="fas fa-right-to-bracket" title="salir"></i>
           <h4>Salir</h4>
@@ -166,7 +166,7 @@ if (isset($_GET['nro_remito'])) {
                     <tr>
                       <td><?php echo $mostrar['nro_remito'] ?></th>
                       <td><?php echo $mostrar['fecha_rem'] ?></th>
-                      <td><?php echo $mostrar['apellido'] ?></th>
+                      <td><?php echo $mostrar['nom_cliente'] ?></th>
                       <td><?php echo $mostrar['cuil/cuit'] ?></th>
                       <td><?php echo $mostrar['direccion'] ?></th>
                       <td><?php echo $mostrar['e-mail'] ?></th>

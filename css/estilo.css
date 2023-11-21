@@ -1,31 +1,36 @@
-.header1{
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header{
     top: 48px;
-    background: url(img/inicio.jpeg);
+    background-image: url(/img/inicio.jpeg);
     background-size:contain;
     background-position:relative;
-    height: 300px;
+    height: 300px;  
 }
-.header1 h1{
+.header h1{
     text-align: center;
     font-size: 35px;
     color: #fff;
     padding: 30px 0;
 }
-.main1{
+.main{
     background: #381b1ba6;
     justify-content: center;
     align-items: center;
     
 }
 
-.contenedor{
-    background:url(img/fondovinoteca.jpg);
+.row{
+    background:#381b1ba6;
     max-width: 1200px;
-    padding: 10px;
+    padding: 20px;
     margin: auto;
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-between;   
     contain: paint;
 }
 
@@ -87,20 +92,18 @@
     position: sticky !important;
     top: 0;
     transition: .3s;
-    
-    margin-right: -100%;
+    right: -100px;
     opacity: 0;
 }
 .carrito .header-carrito{
-    background-color: #000;
+    background-color: #381b1ba6;
     color: #fff;
     text-align: center;
     padding: 30px 0;
 }
 .carrito .carrito-item{
     display: flex;
-    align-items: center;
-    
+    align-items: center;   
     position: relative;
     border-bottom: 1px solid #666;
     padding: 20px;
@@ -165,7 +168,7 @@
 }
 
 .carrito-total{
-    background-color: #f3f3f3;
+    background-color: #381b1ba6;
     padding: 30px;
 }
 .carrito-total .fila{
@@ -175,12 +178,13 @@
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
+    
 }
 .carrito-total .btn-pagar{
     display: block;
     width: 100%;
     border: none;
-    background: #000;
+    background: #666;
     color: #fff;
     border-radius: 5px;
     font-size: 18px;
@@ -194,14 +198,20 @@
 .carrito-total .btn-pagar:hover{
     scale: 1.05;
 }
+.img{
+    width: 320px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 20px 20px 0px 0px;
+}
 .body1{
     font-family: sans-serif;
-    background-color: #381b1ba6;
+    /*background-color: #381b1ba6;*/
     color: white;
-    background:url(./fondovinoteca.jpg);
+    background:url(img/fondovinoteca.jpg);
 }
-.body h1{
-    border: 1px solid blue;
+.body1 h1{
+    
     align-items: center;
     background-color:#381b1ba6;
     color: #000;
@@ -210,54 +220,62 @@
     background-color: #381b1ba6;
     height: 48px;
     padding: 10px 12px;
-    position: relative;    
+    position: relative;
 }
 .checkbox, .icons{
     width: 24px;
     height: 24px;
-    position:absolute;
+    position: absolute;
     top: 10px;
-    right: 22px;
+    right: 12px;
     cursor: pointer;
+}
+.letra{
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 30px;
 }
 .icons{
     pointer-events: none;
-    font-size: 24px;
+    font-size: 25px;
 }
 .checkbox{
-    opacity: 100;
+    opacity: 0;
 }
 .fa-xmark{
-    display:block;
+    display: none;
 }
-.checkbox:checked ~ .fa-bars{
+.checkbox:checked ~.fa-bars{
+    display: none;
+}
+.checkbox:checked ~.fa-xmark{
     display: block;
 }
-.checkbox:checked ~ .fa-xmark{
-    display: block;
-}
-.menu1{
+.menu{
     width: 200px;
-    position:absolute;
-    top: -108px;
+    position: absolute;
+    top: -106px;
+    right: 0px;
     z-index: -1;
-    right: 20px;
     transition: 250ms;
+    /*display: none;*/
+    
 }
-.menu1 li{
+.menu li{
     list-style: none;
 }
-.menu1 li a{
+.menu li a{
     text-decoration: none;
     color: inherit;
     background-color:#381b1ba6;
     display: block;
     padding: 10px 12px;
 }
-.menu1 li a:hover{
-    background-color: grey;
+menu li a:hover{
+    background-color: #381b1b00;
 }
-.checkbox:checked ~ .menu1{
+.checkbox:checked ~ .menu{
+    
     top: 48px;
 }
 @media (min-width: 560px){
@@ -275,4 +293,14 @@
         height: 48px;
         padding: 14px 12px 6px;
     } 
+    .contenedor {
+        display: block;
+      }
+      .contenedor-items{
+          width: 100% ;
+      }
+      .carrito{
+          width: 100%;
+      }
+  
 } 

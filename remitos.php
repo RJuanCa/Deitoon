@@ -59,7 +59,7 @@ include ("db.php");
         </div>
       </a>
       
-      <a href="index.html">
+      <a href="index.php">
         <div class="option">
           <i class="fas fa-right-to-bracket" title="salir"></i>
           <h4>Salir</h4>
@@ -75,9 +75,9 @@ include ("db.php");
   <thead>
     <tr>
       <th scope="col" width='10%'>Nro. Remito</th>
-      <th scope="col"width='20%'>Fecha</th>
-      <th scope="col"width='10%'>Id Cliente</th>
-      <th scope="col"width='10%'>Total Articulos</th>
+      <th scope="col"width='15%'>Fecha</th>
+      <th scope="col"width='20%'>Nombre del Cliente</th>
+      <th scope="col"width='10%'>Total de la Venta</th>
       <th scope="col"width='20%'>Acciones</th>
     </tr>
   </thead>
@@ -92,10 +92,10 @@ include ("db.php");
     <tr>
       <td><?php echo $mostrar['nro_remito'] ?></th>
       <td><?php echo $mostrar['fecha_rem'] ?></th>
-      <td><?php echo $mostrar['id_cliente'] ?></th>
-      <td><?php echo $mostrar['total_artic'] ?></th>
+      <td><?php echo $mostrar['nom_cliente'] ?></th>
+      <td><?php echo $mostrar['total_vta'] ?></th>
       <td>
-      <a class="btn btn-success" href="factura_reporte.php?id=<?php echo $mostrar['id_cliente'] ?>"> Ver </a>
+      <a class="btn btn-warning" href="factura_reporte.php">Imprimir Remito</a>
 
         <form action="remito_eliminar.php" method="post">
           <input type="hidden" value="<?php echo $mostrar['nro_remito'] ?>" name="txtRem" readonly>

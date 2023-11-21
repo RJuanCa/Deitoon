@@ -1,7 +1,8 @@
 <?php 
 include_once 'db.php';
+
 class User extends DB{
-  private $nombre;
+  private  $nombre;
   private $usuario;
 
   public function userExists($usuario, $clave){
@@ -30,5 +31,4 @@ class User extends DB{
    return $this->nombre;
   }
 }
-
 ?>

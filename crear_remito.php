@@ -1,9 +1,10 @@
 <?php
 include_once 'db.php';
-session_start();
+include 'carrito.php';
+
 /*
 Nota: 
-echo $_SESSION['carrito'][1]['id_artículo'];
+echo $_SESSION['CARRITO'][1]['id_artículo'];
 exit();
 */
 
@@ -26,46 +27,46 @@ if (isset($_GET['orden'])) {
 
   $orden = $_GET['orden'];
 
-  if ($_SESSION['total_productos'] == 1) {
+  if ($_SESSION['total_vta'] == 1) {
 
-    if (isset($_SESSION['carrito'][1]['orden'])) {
+    if (isset($_SESSION['CARRITO'][1]['orden'])) {
 
       $_SESSION['total_productos']--;
-      unset($_SESSION['carrito']);
+      unset($_SESSION['CARRITO']);
     }
   }
 
   if ($_SESSION['total_productos'] != 1) {
 
-    if (isset($_SESSION['carrito'][$_SESSION['total_productos']]['orden'])) {
+    if (isset($_SESSION['CARRITO'][$_SESSION['total_productos']]['orden'])) {
 
-      if ($orden == $_SESSION['carrito'][$_SESSION['total_productos']]['orden']) {
+      if ($orden == $_SESSION['CARRITO'][$_SESSION['total_productos']]['orden']) {
 
         $_SESSION['total_productos']--;
-        unset($_SESSION['carrito'][$orden]);
-      } else { // if($orden==$_SESSION['carrito'][$_SESSION['total_productos']]['orden'])
+        unset($_SESSION['CARRITO'][$orden]);
+      } else { // if($orden==$_SESSION['CARRITO'][$_SESSION['total_productos']]['orden'])
 
         for ($i = $orden; $i <= $_SESSION['total_productos']; $i++) {
 
           if ($_SESSION['total_productos'] != $i) {
 
-            $_SESSION['carrito'][$i]['id_artículo']  = $_SESSION['carrito'][$i + 1]['id_artículo'];
-            $_SESSION['carrito'][$i]['cantidad']  = $_SESSION['carrito'][$i + 1]['cantidad'];
-            $_SESSION['carrito'][$i]['producto']  = $_SESSION['carrito'][$i + 1]['producto'];
-            $_SESSION['carrito'][$i]['descripcion']  = $_SESSION['carrito'][$i + 1]['descripcion'];
-            $_SESSION['carrito'][$i]['precio']  = $_SESSION['carrito'][$i + 1]['precio'];
-            $_SESSION['carrito'][$i]['orden']  = $_SESSION['carrito'][$i]['orden'];
+            $_SESSION['CARRITO'][$i]['id_artículo']  = $_SESSION['CARRITO'][$i + 1]['id_artículo'];
+            $_SESSION['CARRITO'][$i]['cantidad']  = $_SESSION['CARRITO'][$i + 1]['cantidad'];
+            $_SESSION['CARRITO'][$i]['producto']  = $_SESSION['CARRITO'][$i + 1]['producto'];
+            $_SESSION['CARRITO'][$i]['descripcion']  = $_SESSION['CARRITO'][$i + 1]['descripcion'];
+            $_SESSION['CARRITO'][$i]['precio']  = $_SESSION['CARRITO'][$i + 1]['precio'];
+            $_SESSION['CARRITO'][$i]['orden']  = $_SESSION['CARRITO'][$i]['orden'];
           } else { // if($_SESSION['total_productos']!=$i)
 
             $_SESSION['total_productos']--;
-            unset($_SESSION['carrito'][$i]);
+            unset($_SESSION['CARRITO'][$i]);
           } // if($_SESSION['total_productos']!=$i)	
 
         } // for($i=$orden;$i<=$_SESSION['total_productos'];$i++)
 
-      } // if($orden==$_SESSION['carrito'][$_SESSION['total_productos']]['orden'])
+      } // if($orden==$_SESSION['CARRITO'][$_SESSION['total_productos']]['orden'])
 
-    } // if(isset($_SESSION['carrito'][$_SESSION['total_productos']]['orden']))
+    } // if(isset($_SESSION['CARRITO'][$_SESSION['total_productos']]['orden']))
 
   } // if($_SESSION['total_productos']!=1)
 
@@ -85,11 +86,11 @@ if (isset($_GET['id_artículo'])) {
 
   if ($hayexistencia == "si") {
 
-    if (isset($_SESSION['carrito'])) {
+    if (isset($_SESSION['CARRITO'])) {
 
       for ($i = 1; $i <= $_SESSION['total_productos']; $i++) {
 
-        if ($_SESSION['carrito'][$i]['id_artículo'] == $id_artículo) {
+        if ($_SESSION['CARRITO'][$i]['id_artículo'] == $id_artículo) {
 
           $ii = $i;
           //echo "<script>alert('Producto ya agregado en reglon nro.:".$i."')</script>";
@@ -98,7 +99,7 @@ if (isset($_GET['id_artículo'])) {
         }
       }  //for($i=1;$i<=$_SESSION['total_productos'];$i++);
 
-    } //if(isset($_SESSION['carrito']));
+    } //if(isset($_SESSION['CARRITO']));
 
   }
 
@@ -106,7 +107,7 @@ if (isset($_GET['id_artículo'])) {
 
     $_SESSION['total_productos']++;
 
-    $_SESSION['carrito'][$_SESSION['total_productos']] = array(
+    $_SESSION['CARRITO'][$_SESSION['total_productos']] = array(
 
       "id_artículo" => $id_artículo,
       "cantidad" => "",
@@ -146,16 +147,16 @@ if (isset($_POST['submit2'])) {
 
       $_SESSION['cantidad3'][$key] = $val;
 
-      if ($val != $_SESSION['carrito'][$key]['cantidad']) {
+      if ($val != $_SESSION['CARRITO'][$key]['cantidad']) {
 
-        $_SESSION['carrito'][$key]['cantidad'] = "";
+        $_SESSION['CARRITO'][$key]['cantidad'] = "";
         $_SESSION['nro_reglon3'] = $key;
 
         $k8['entro'][$kk8] = 1;
       }
     } else {
 
-      $_SESSION['carrito'][$key]['cantidad'] = "";
+      $_SESSION['CARRITO'][$key]['cantidad'] = "";
       $_SESSION['nro_reglon3'] = $key;
 
       $k8['entro'][$kk8] = 1;
@@ -209,7 +210,7 @@ if (isset($_POST['submit'])) {
 
       $val = intval($val);
 
-      $id_artículo_b = $_SESSION['carrito'][$key]['id_artículo'];
+      $id_artículo_b = $_SESSION['CARRITO'][$key]['id_artículo'];
 
       // Buscar id_artículo
       $sql3 = "SELECT id_artículo, cant_existencia FROM `tab_artículos` WHERE (id_artículo = " . $id_artículo_b . ")";
@@ -226,18 +227,18 @@ if (isset($_POST['submit'])) {
 
       if ($existencia_b < $val) {
 
-        $_SESSION['carrito'][$key]['cantidad'] = "";
+        $_SESSION['CARRITO'][$key]['cantidad'] = "";
         $hayexistencia_cant = "no";
-        $producto_e = $_SESSION['carrito'][$key]['producto'];
-        //$reglon_b=$_SESSION['carrito'][$key]['orden'];
+        $producto_e = $_SESSION['CARRITO'][$key]['producto'];
+        //$reglon_b=$_SESSION['CARRITO'][$key]['orden'];
 
       } else {
 
-        $_SESSION['carrito'][$key]['cantidad'] = $val;
+        $_SESSION['CARRITO'][$key]['cantidad'] = $val;
       }
     } else { // if (is_numeric($val))
 
-      $_SESSION['carrito'][$key]['cantidad'] = "";
+      $_SESSION['CARRITO'][$key]['cantidad'] = "";
     } // if (is_numeric($val))
 
   } // foreach($_POST['cantidad'] as $key => $val)	
@@ -281,10 +282,10 @@ if (isset($_POST['submit3'])) {
       //$_SESSION['orden3'][$key]=$key;		
       $_SESSION['cantidad3'][$key] = $val;
 
-      if ($val != $_SESSION['carrito'][$key]['cantidad']) {
+      if ($val != $_SESSION['CARRITO'][$key]['cantidad']) {
 
         $_SESSION['reglon_actualizado'] = "no";
-        $_SESSION['carrito'][$key]['cantidad'] = "";
+        $_SESSION['CARRITO'][$key]['cantidad'] = "";
         $_SESSION['nro_reglon3'] = $key;
 
         $_SESSION['mensaje_no_actualizado'] = "El reglon nro. $key no se actualizó la cantidad";
@@ -298,7 +299,7 @@ if (isset($_POST['submit3'])) {
     } else {
 
       $_SESSION['reglon_actualizado'] = "no";
-      $_SESSION['carrito'][$key]['cantidad'] = "";
+      $_SESSION['CARRITO'][$key]['cantidad'] = "";
       $_SESSION['nro_reglon3'] = $key;
 
       $_SESSION['mensaje_no_actualizado'] = "El reglon nro. $key no se actualizó la Cantidad";
@@ -437,7 +438,7 @@ while($mostrar=mysqli_fetch_array($result)){
 
       <p><a href="buscar_productos.php"><span style="color: white;" class="encab">Agregar Productos</span></a></p>
 
-      <?php if (isset($_SESSION['carrito'])) { ?>
+      <?php if (isset($_SESSION['CARRITO'])) { ?>
 
         <form id="formulario_renglones" method="post" action="crear_remito.php">
 
@@ -470,21 +471,21 @@ while($mostrar=mysqli_fetch_array($result)){
                   $nro_reng2++;
                   $nro_reglon = $nro_reng2;
 
-                  $subtotal = $_SESSION['carrito'][$nro_reglon]['cantidad'] * $_SESSION['carrito'][$nro_reglon]['precio'];
+                  $subtotal = $_SESSION['CARRITO'][$nro_reglon]['cantidad'] * $_SESSION['CARRITO'][$nro_reglon]['precio'];
                   $totalprice += $subtotal;
 
-                  $cantidad2 += $_SESSION['carrito'][$nro_reglon]['cantidad'];
+                  $cantidad2 += $_SESSION['CARRITO'][$nro_reglon]['cantidad'];
 
                 ?>
 
                   <tr class='table-row'>
 
-                    <td><?php echo $_SESSION['carrito'][$nro_reglon]['orden'] ?></td>
-                    <td><?php echo $_SESSION['carrito'][$nro_reglon]['producto'] ?></td>
-                    <td><?php echo $_SESSION['carrito'][$nro_reglon]['descripcion'] ?></td>
-                    <td style="center"><input class="form-control" id="cantidad" type="text" name="cantidad[<?php echo $nro_reglon ?>]" size="6" maxlength="6" value="<?php echo $_SESSION['carrito'][$nro_reglon]['cantidad'] ?>" /></td>
+                    <td><?php echo $_SESSION['CARRITO'][$nro_reglon]['orden'] ?></td>
+                    <td><?php echo $_SESSION['CARRITO'][$nro_reglon]['producto'] ?></td>
+                    <td><?php echo $_SESSION['CARRITO'][$nro_reglon]['descripcion'] ?></td>
+                    <td style="center"><input class="form-control" id="cantidad" type="text" name="cantidad[<?php echo $nro_reglon ?>]" size="6" maxlength="6" value="<?php echo $_SESSION['CARRITO'][$nro_reglon]['cantidad'] ?>" /></td>
 
-                    <td><a href="#" onclick="Validar3(<?php echo $_SESSION['carrito'][$nro_reglon]['orden'] ?>)">Eliminar</a></td>
+                    <td><a href="#" onclick="Validar3(<?php echo $_SESSION['CARRITO'][$nro_reglon]['orden'] ?>)">Eliminar</a></td>
 
                   </tr>
 
@@ -553,7 +554,7 @@ while($mostrar=mysqli_fetch_array($result)){
 
       <?php
 
-      } // if(isset($_SESSION['carrito']))
+      } // if(isset($_SESSION['CARRITO']))
 
       ?>
 

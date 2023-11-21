@@ -12,7 +12,7 @@ if(isset($_SESSION['rol'])){
             header('location:admin.php');
             break;
         case '2':
-            header('location:home.php');
+            header('location:indice.php');
             break;
             
             default:
@@ -38,7 +38,7 @@ if(isset($_POST['usuario']) && isset($_POST['clave'])){
                 header('location:admin.php');
                 break;
             case 2:
-                header('location:home.php');
+                header('location:indice.php');
                 break;
                 
                 default:

@@ -5,7 +5,7 @@ if(!isset($_SESSION['rol'])){
   header('location:login.php');
 }else{
   if($_SESSION['rol']!=1){
-    header('location:login.php');
+    header('location:index.php');
   }
 }
 ?>
@@ -65,7 +65,7 @@ if(!isset($_SESSION['rol'])){
         </div>
       </a>
       
-      <a href="login.php">
+      <a href="indice.html">
         <div class="option">
           <i class="fas fa-right-to-bracket" title="salir"></i>
           <h4>Salir</h4>
@@ -83,11 +83,11 @@ if(!isset($_SESSION['rol'])){
 <i class="fa-solid fa-n fa-beat fa-2xl" style="color: #fcfcfc;"></i><br><br>
   <h2 style="color: #ffffff;">Todas tus bebidas en un solo lugar</h2>
   <br><br><br>
-  <h1><i class="fa-brands fa-facebook fa-spin fa-2xl" style="color: #ffffff;"></i></h1>
+  <h1><i class="fa-brands fa-facebook fa-2xl" style="color: #ffffff;"></i></h1>
   <br>
   <a href="https://es-la.facebook.com/">Fecebook</a>
   <br><br><br>
-  <h1><i class="fa-brands fa-whatsapp fa-spin fa-2xl" style="color: #ffffff;"></i></h1>
+  <h1><i class="fa-brands fa-whatsapp fa-2xl" style="color: #ffffff;"></i></h1>
   <br>
   <a href="https://web.whatsapp.com/">Whatsapp</a>
 </main>
