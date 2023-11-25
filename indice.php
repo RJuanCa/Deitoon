@@ -3,6 +3,7 @@ include 'global/config.php';
 include 'global/conexion.php';
 include 'carrito.php';
 include 'user.php';
+include_once 'user_sesion.php';
 
 ?>
 <!DOCTYPE html>
@@ -32,11 +33,11 @@ include 'user.php';
             <i class="icons fa-solid fa-xmark"></i>
         
             <ul class="menu">
-                <li><a href="index.php"><i class="fa fa-user" title="usuarios"></i> Usuario <?php echo $usuario->getCurrentUser(); ?></a></li>
+                <li><a href="index.php"><i class="fa fa-user" title="usuarios"></i> Usuario </a></li>
                 <li><a href="mostrarCarrito.php"><i class="fa-solid fa-cart-shopping"></i> carrito (<?php
                         echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
                     ?>)</a></li>
-                <li><a href="#"><i class="fa-brands fa-whatsapp"></i> Contacto</a></li>
+                <li><a href="https://web.whatsapp.com/"><i class="fa-brands fa-whatsapp"></i> Contacto</a></li>
                 <li><a href="logout.php"><i class="nav-menu-list fa-solid fa-person-from-portal"></i> Cerrar</a></li>
             </ul><br>
         </nav><br><br>

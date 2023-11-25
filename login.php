@@ -10,7 +10,7 @@
         <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <form class="text-center bg-dark" action="validar.php"  method="POST">
+        <form class="text-center bg-dark" action="validar.php"  method="POST" autocomplete="off">
             <?php
             if(isset($errorLogin)){
                 echo $errorLogin;
@@ -22,7 +22,7 @@
             <input type="text" id="usuario" name="usuario" autofocus ><br><br>
             <i class="fa-solid fa-unlock"></i>
             <label class="form-label blank">Contraseña</label>
-            <input type="password" id="contraseña" name="contraseña">
+            <input type="password" id="clave" name="clave">
             <input  type="submit" id="btn-submit" value="Entrar">
        
         </form>

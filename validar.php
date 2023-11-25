@@ -1,30 +1,18 @@
 <?php
 include_once 'db.php';
+
 session_start();
 
 if (isset($_GET['cerrar_sesion'])) {
     session_unset();
     session_destroy();
 }
-if(isset($_SESSION['rol'])){
-    switch($_SESSION['rol']){
-        case 1:
-            header('location: admin.php');
-            break;
-        case '2':
-            header('location:indice.php');
-            break;
-            
-            default:
-
-    }
-}
-if(isset($_POST['usuario']) && isset($_POST['contraseña'])){
+if(isset($_POST['usuario']) && isset($_POST['clave'])){
     $usuario = $_POST['usuario'];
-    $contraseña = $_POST['contraseña'];
+    $clave = $_POST['clave'];
 
    
-    $sql = "SELECT * FROM tab_usuarios ";
+    $sql = "SELECT * FROM tab_usuarios WHERE usuario = '$usuario' AND clave = '$clave'";
     $result= mysqli_query($conexion, $sql);
     $row = mysqli_fetch_array($result);
     if($row==true){

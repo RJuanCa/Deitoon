@@ -1,4 +1,9 @@
 <?php
+include_once 'user_sesion.php';
+$userSesion=new UserSesion();
+$userSesion->closeSesion();
+
+header("location: .indice.php");
 // Inicializar la sesión.
 // Si está usando session_name("algo"), ¡no lo olvide ahora!
 session_start();
