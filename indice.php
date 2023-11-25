@@ -32,7 +32,7 @@ include 'user.php';
             <i class="icons fa-solid fa-xmark"></i>
         
             <ul class="menu">
-                <li><a href="index.php"><i class="fa fa-user" title="usuarios"></i> Usuario </a></li>
+                <li><a href="index.php"><i class="fa fa-user" title="usuarios"></i> Usuario <?php echo $usuario->getCurrentUser(); ?></a></li>
                 <li><a href="mostrarCarrito.php"><i class="fa-solid fa-cart-shopping"></i> carrito (<?php
                         echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
                     ?>)</a></li>

@@ -4,9 +4,10 @@ include_once 'db.php';
 class User extends DB{
   private $contraseña;
   private $usuario;
+  private $nombre;
 
   public function userExists($usuario, $contraseña){
-    //$md5pass = $contraseña;
+    //$md5pass = md5($contraseña);
     $query = $this->connect()->prepare ('SELECT * FROM tab_usuarios WHERE usuario = :usuario AND contraseña = :contraseña');
     $query->execute(['usuario' => $usuario,'contraseña'=> $contraseña]);
 
@@ -22,13 +23,14 @@ class User extends DB{
 
     foreach ($query as $currentUser){
       $this->contraseña = $currentUser['contraseña'];
-      $this->usuario = $currentUser['usuario'];      
+      $this->usuario = $currentUser['usuario'];
+      $this->nombre = $currentUser['nombre'];
     }
 
   }
   
   public function getNombre(){
-   return $this->usuario;
+   return $this->nombre;
   }
 }
 ?>

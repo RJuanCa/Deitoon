@@ -1,9 +1,10 @@
 <?php
 include_once 'db.php';
 include_once 'user.php';
+include_once 'user_sesion.php';
 
 
-//$userSesion = new $userSesion();
+$userSesion = new $userSesion();
 $usuario= new User();
 
 if(isset($_SESSION['usuario'])){
@@ -19,11 +20,11 @@ if(isset($_SESSION['usuario'])){
         //echo "Usuario Validado";
         $userSession->setCurrentUser($userForm);
         $usuario->setUser($userForm);
-        include_once 'home.php';
+        include_once 'indice.php';
     }else{
         //echo"Nombre de usuario y/o contraseña incorrecto";
         $errorLogin = "Nombre de usuario y/o contraseña incorrecto";
-        include_once 'login.php';
+        include_once '.login.php';
     }
 }else{
     //echo"login.php";

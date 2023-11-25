@@ -65,7 +65,7 @@ if(!isset($_SESSION['rol'])){
         </div>
       </a>
       
-      <a href="indice.html">
+      <a href="indice.php">
         <div class="option">
           <i class="fas fa-right-to-bracket" title="salir"></i>
           <h4>Salir</h4>
